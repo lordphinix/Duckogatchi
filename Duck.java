@@ -10,7 +10,7 @@ public class Duck {
 
 	public static void main(String[] args) {
 		String name = "NullDuck";
-		int Stomach =-1;
+		int stomach =-1;
 		int age = -1;
 		int fun = -1;
 
@@ -22,14 +22,14 @@ public class Duck {
 		if (!theDuck.isFile()){
 			System.out.println("What will you name your duck");
 			name = pager.nextLine();
-			Stomach = 52;
+			stomach = 52;
 			age = 0;
 			fun = 50;
 		} else {
 			try {
 				Scanner scantron = new Scanner(theDuck);
 				name = scantron.nextLine();
-				Stomach = scantron.nextInt();
+				stomach = scantron.nextInt();
 				age = scantron.nextInt();
 				fun = scantron.nextInt();
 				scantron.close();
@@ -50,27 +50,62 @@ public class Duck {
 		while (!input.equals("Quit")&& !input.equals("quit")&&!input.equals("Q")&&!input.equals("q")){
 			gameTools.clear();
 			System.out.println(name+" - "+age);
+			gameTools.defaultDuck();
 			gameTools.display();
-			System.out.println("Stomach: "+Stomach+"               "+"Fun: "+fun);
+			System.out.println("Stomach: "+stomach+"               "+"Fun: "+fun);
 			gameTools.space();
 			System.out.println("[F]eed                [E]xercise");
 			System.out.println("[G]ames                [S]tudy]");
+			System.out.println("           [Q]uit              ");
 			gameTools.space();
-			input = pager.nextLine();
-			if (Stomach <= 0){
-				//Starve stub
+			if (stomach <= 0){
+				gameTools.starve();
+				System.out.println(name+" has starved to death");
+				theDuck.delete();
+				input = "quit";
+				dead = true;
 			}
-			if (Stomach >= 100){
-				//Heart stub
+			if (stomach >= 100){
+				gameTools.heart();
+				System.out.println(name+" has had a heart attack");
+				theDuck.delete();
+				input = "quit";
+				dead = true;
 			}
 			if (fun <= 0){
-				//Bored stub
+				gameTools.ownFun();
+				System.out.println(name+" has thrown their head out of boredom");
+				theDuck.delete();
+				input = "quit";
+				dead = true;
 			}
 			if (fun >= 100){
-				//Explosive stub
+				gameTools.funOverload();
+				System.out.println(name+" has exploded with joy");
+				theDuck.delete();
+				input = "quit";
+				dead = true;
 			} 
+			if (dead==false){
+				input = pager.nextLine();
+			}
 
+			if (input.equals("Feed")|| input.equals("feed")||input.equals("F")||input.equals("f")){
+				gameTools.feed();
+				stomach += 8;
 
+			} else if (input.equals("Games")|| input.equals("games")||input.equals("G")||input.equals("g")){
+				System.out.println("Game TBD");
+				fun+=5;
+
+			} else if (input.equals("Exercise")|| input.equals("exercise")||input.equals("E")||input.equals("e")){
+				gameTools.run();
+				stomach -= 8;
+
+			} else if (input.equals("Study")|| input.equals("study")||input.equals("S")||input.equals("s")){
+				gameTools.trivia(pager);
+				fun-=5;
+			}
 
 		}
 		pager.close();
@@ -79,7 +114,7 @@ public class Duck {
 			try {
 				PrintWriter saver = new PrintWriter(theDuck);
 				saver.println(name);
-				saver.println(Stomach);
+				saver.println(stomach);
 				saver.println(age);
 				saver.println(fun);
 				saver.close();

@@ -9,8 +9,8 @@ Raise your own duck from the comfort of your room.
 2) Open Command Prompt
 3) Type 'powershell'
 4) Type 'cd (location of where you put file)'
-5) Type 'java Driver'
-6) Don't get qucked
+5) Type 'java Duck'
+6) Don't get quacked
 
 
 

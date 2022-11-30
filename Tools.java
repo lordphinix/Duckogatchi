@@ -209,6 +209,7 @@ public class Tools {
         screen[screen.length-2][17] = " ";
         screen[screen.length-3][15] = " ";
         screen[screen.length-3][16] = " ";
+        
         display();
             try {
             Thread.sleep(500);
@@ -364,7 +365,30 @@ public class Tools {
                 
             }
             try {
-                Thread.sleep(600);
+                Thread.sleep(1200);
+                } catch (Exception e) {
+                // ERRORCODE 0003 - Time is Meaningless
+                }
+        }
+
+        public void gamer(Scanner inScan){
+            Random rand = new Random();
+            int q = rand.nextInt(4)+1;
+            int guess;
+            System.out.println("Welcome to the Number Guessing Game!");
+            System.out.println("");
+            System.out.println("I'm thinking of a number between 1 and 4");
+            System.out.println(q);
+            guess = inScan.nextInt();
+            if (q == guess){
+                System.out.println("Wow, you guessed it right!");
+            } else {
+                System.out.println("Aw shucks, that's not right.");
+                System.out.println("I was thinking of "+ q);
+            }
+
+            try {
+                Thread.sleep(1200);
                 } catch (Exception e) {
                 // ERRORCODE 0003 - Time is Meaningless
                 }

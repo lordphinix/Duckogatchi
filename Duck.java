@@ -95,7 +95,7 @@ public class Duck {
 				stomach += 8;
 
 			} else if (input.equals("Games")|| input.equals("games")||input.equals("G")||input.equals("g")){
-				System.out.println("Game TBD");
+				gameTools.gamer(pager);
 				fun+=5;
 
 			} else if (input.equals("Exercise")|| input.equals("exercise")||input.equals("E")||input.equals("e")){
